@@ -3,290 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Fit en Casa - Pierde Peso Sin Gym</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Transforma tu Cuerpo y tu Disciplina | Ebook Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-green: #2ecc71;
-            --dark-green: #27ae60;
-            --accent-lime: #a2ff00;
-            --bg-dark: #0f172a;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #ffffff;
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            overflow-x: hidden;
             scroll-behavior: smooth;
         }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            line-height: 1.1;
+        .bg-orange-brand { background-color: #FF5E00; }
+        .text-orange-brand { color: #FF5E00; }
+        .border-orange-brand { border-color: #FF5E00; }
+        
+        /* Efecto LED Glow al pasar el cursor */
+        .btn-led-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px 5px rgba(255, 94, 0, 0.6), 
+                        0 0 30px 10px rgba(255, 94, 0, 0.3);
+            background-color: #ff7526;
+        }
+        
+        .btn-led-glow-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.4);
         }
 
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Clases de utilidad */
-        .text-center { text-align: center; }
-        .py-section { padding: 80px 0; }
-        .btn {
-            display: inline-block;
-            padding: 18px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-        }
-        .btn-primary {
-            background-color: var(--accent-lime);
-            color: #000;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            background-color: #beff4d;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            padding-top: 50px;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--accent-lime);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(162, 255, 0, 0.3);
-            border: 4px solid var(--accent-lime);
-        }
-
-        /* Sección de Problemas */
-        .pain-section { background-color: #fff; }
-        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .pain-card { padding: 30px; background: #fff; border-left: 5px solid #ef4444; box-shadow: var(--card-shadow); }
-
-        /* Sección de Solución */
-        .solution-section { background-color: var(--bg-dark); color: white; }
-        .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 50px; }
-        .step-card { text-align: center; }
-        .step-icon { background: var(--primary-green); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: #000; }
-
-        /* Lo que incluye */
-        .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
-        .product-card { background: #fff; padding: 25px; border-radius: 15px; text-align: center; box-shadow: var(--card-shadow); border: 1px solid #e2e8f0; }
-        .product-card h4 { margin: 15px 0 10px; color: var(--primary-green); }
-        .bonus-tag { background: #000; color: var(--accent-lime); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-bottom: 10px; }
-
-        /* Comparativa */
-        .comparison-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background-color: #e2e8f0; border-radius: 15px; overflow: hidden; margin-top: 40px; }
-        .comp-col { background: white; padding: 40px; }
-        .check { color: #22c55e; }
-        .cross { color: #ef4444; }
-        .comp-list { list-style: none; }
-        .comp-list li { padding: 12px 0; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f1f5f9; }
-
-        /* Testimonios */
-        .testimonial-slider { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 40px; }
-        .testimonial-card { background: white; padding: 25px; border-radius: 15px; width: 340px; box-shadow: var(--card-shadow); }
-        .stars { color: #fbbf24; margin-bottom: 10px; }
-        .testi-name { font-weight: bold; display: block; margin-top: 15px; }
-
-        /* Pricing Box */
-        .pricing-box { background: white; max-width: 500px; margin: 40px auto 0; padding: 50px; border-radius: 30px; text-align: center; border: 3px solid var(--accent-lime); box-shadow: 0 20px 50px rgba(46, 204, 113, 0.2); }
-        .old-price { text-decoration: line-through; font-size: 1.5rem; color: #94a3b8; }
-        .new-price { font-size: 4rem; font-weight: 900; color: #000; display: block; margin: 10px 0; }
-        .limited-offer { color: #ef4444; font-weight: bold; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
-        /* Footer */
-        footer { padding: 40px 0; text-align: center; background: #000; color: #64748b; font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .comparison-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.2rem; }
+        .gradient-dark {
+            background: linear-gradient(180deg, #000000 0%, #111111 100%);
         }
     </style>
 </head>
-<body>
+<body class="bg-black text-white antialiased">
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Pierde hasta <span>5 kg en 30 días</span> sin gym y sin dietas caras</h1>
-                    <p>El sistema paso a paso para transformar tu cuerpo usando ingredientes que ya tienes en tu cocina y 20 minutos al día.</p>
-                    <a href="https://pay.hotmart.com/H105396143P" class="btn btn-primary">QUIERO EMPEZAR HOY</a>
-                    <div style="margin-top: 15px; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; justify-content: center;">
-                        <i data-lucide="shield-check" style="width: 18px; color: var(--accent-lime);"></i> Pago 100% Seguro
-                    </div>
+    <!-- 1. HERO SECTION -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 gradient-dark">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-20"></div>
+        
+        <div class="relative z-10 max-w-4xl">
+            <span class="inline-block px-4 py-1 mb-6 border border-orange-brand text-orange-brand rounded-full text-sm font-bold tracking-widest uppercase">
+                Sistema Paso a Paso
+            </span>
+            <h1 class="text-5xl md:text-7xl font-800 leading-tight mb-6">
+                TRANSFORMA TU <span class="text-orange-brand">CUERPO</span> Y TU <span class="text-orange-brand">DISCIPLINA</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                El sistema para dejar de empezar y abandonar. Sin gimnasio, sin complicaciones, sin perder tiempo.
+            </p>
+            
+            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl inline-block mb-10 border border-white/20">
+                <div class="flex items-center justify-center gap-4 mb-2">
+                    <span class="text-gray-400 line-through text-lg">ANTES: $39.99</span>
+                    <span class="text-3xl font-bold text-white">HOY: $5.99</span>
                 </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600" alt="Comida saludable">
-                </div>
+                <p class="text-orange-brand text-sm font-bold uppercase tracking-tighter">Oferta por tiempo limitado</p>
             </div>
-        </div>
-    </header>
 
-    <!-- SECCIÓN DE DOLOR -->
-    <section class="pain-section py-section">
-        <div class="container">
-            <h2 class="text-center">¿Te sientes identificado con esto?</h2>
-            <div class="pain-grid">
-                <div class="pain-card">
-                    <i data-lucide="clock" style="color: #ef4444; margin-bottom: 10px;"></i>
-                    <h3>"No tengo tiempo"</h3>
-                    <p>Llegas cansado del trabajo y lo último que quieres es ir a un gimnasio a hacer fila por una máquina.</p>
+            <a href="https://pay.hotmart.com/O105360467R" target="_blank" class="block w-full md:w-max mx-auto px-10 py-5 bg-orange-brand text-white text-xl font-bold rounded-xl btn-led-glow transition-all duration-300 uppercase">
+                🔥 QUIERO EMPEZAR AHORA
+            </a>
+        </div>
+    </section>
+
+    <!-- 2. PRUEBA SOCIAL -->
+    <section class="py-12 bg-white text-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col items-center mb-10">
+                <div class="flex text-yellow-400 mb-2 text-2xl">
+                    ⭐⭐⭐⭐⭐
                 </div>
-                <div class="pain-card">
-                    <i data-lucide="banknote" style="color: #ef4444; margin-bottom: 10px;"></i>
-                    <h3>"Las dietas son caras"</h3>
-                    <p>Crees que para comer sano necesitas comprar salmón, aguacates y productos orgánicos impagables.</p>
+                <p class="font-bold text-lg">4.8/5 basado en +127 personas</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-orange-brand italic">
+                    "Muy claro y fácil de seguir. Por fin entiendo cómo organizarme."
                 </div>
-                <div class="pain-card">
-                    <i data-lucide="frown" style="color: #ef4444; margin-bottom: 10px;"></i>
-                    <h3>"Nada me funciona"</h3>
-                    <p>Has intentado de todo pero el efecto rebote siempre te persigue. Te sientes frustrada al verte al espejo.</p>
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-orange-brand italic">
+                    "Por fin algo que sí pude cumplir sin sentirme abrumada."
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-orange-brand italic">
+                    "Me ayudó a construir hábitos que realmente duran. Excelente."
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE SOLUCIÓN -->
-    <section class="solution-section py-section">
-        <div class="container">
-            <h2 class="text-center" style="margin-bottom: 20px;">Presentamos: Método FIT EN CASA</h2>
-            <div class="solution-grid">
-                <div class="step-card">
-                    <div class="step-icon"><i data-lucide="shopping-cart"></i></div>
-                    <h3>Comida Económica</h3>
-                    <p>Aprende a usar alimentos básicos del mercado para quemar grasa.</p>
+    <!-- 3. PROBLEMA -->
+    <section class="py-20 bg-zinc-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center">¿Por qué no estás viendo resultados?</h2>
+            <div class="space-y-6 max-w-lg mx-auto mb-10">
+                <div class="flex items-center gap-4 bg-black/40 p-4 rounded-lg">
+                    <span class="text-red-500 text-2xl">❌</span>
+                    <p class="text-lg">No tienes un plan claro</p>
                 </div>
-                <div class="step-card">
-                    <div class="step-icon"><i data-lucide="home"></i></div>
-                    <h3>Rutinas en Casa</h3>
-                    <p>Ejercicios de 15 a 20 minutos sin necesidad de equipo profesional.</p>
+                <div class="flex items-center gap-4 bg-black/40 p-4 rounded-lg">
+                    <span class="text-red-500 text-2xl">❌</span>
+                    <p class="text-lg">No sabes qué hacer cada día</p>
                 </div>
-                <div class="step-card">
-                    <div class="step-icon"><i data-lucide="zap"></i></div>
-                    <h3>Plan Fácil</h3>
-                    <p>Sin contar calorías obsesivamente. Solo sigue el mapa y mira los resultados.</p>
+                <div class="flex items-center gap-4 bg-black/40 p-4 rounded-lg">
+                    <span class="text-red-500 text-2xl">❌</span>
+                    <p class="text-lg">No tienes disciplina (dependes de la motivación)</p>
+                </div>
+                <div class="flex items-center gap-4 bg-black/40 p-4 rounded-lg">
+                    <span class="text-red-500 text-2xl">❌</span>
+                    <p class="text-lg">Empiezas con ganas... pero abandonas pronto</p>
+                </div>
+            </div>
+            <p class="text-center text-xl text-gray-400">
+                No es tu culpa... <span class="text-white font-bold underline decoration-orange-brand">es la falta de un sistema.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. SOLUCIÓN -->
+    <section class="py-20 bg-orange-brand text-white overflow-hidden relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-800 mb-8">AQUÍ TIENES EL SISTEMA</h2>
+            <p class="text-xl md:text-2xl leading-relaxed opacity-90">
+                Este ebook te guía paso a paso para que empieces desde cero y construyas una disciplina inquebrantable sin depender de la motivación momentánea.
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. QUÉ INCLUYE & 6. BONOS -->
+    <section class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Incluye -->
+                <div>
+                    <h3 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                        Contenido del Ebook
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-lg"><span class="text-green-500">✔</span> Rutinas prácticas</li>
+                        <li class="flex items-start gap-3 text-lg"><span class="text-green-500">✔</span> Plan semanal estructurado</li>
+                        <li class="flex items-start gap-3 text-lg"><span class="text-green-500">✔</span> Guía de alimentación flexible</li>
+                        <li class="flex items-start gap-3 text-lg"><span class="text-green-500">✔</span> Sistema paso a paso</li>
+                        <li class="flex items-start gap-3 text-lg"><span class="text-green-500">✔</span> Ejercicios explicados</li>
+                    </ul>
+                </div>
+                <!-- Bonos -->
+                <div class="bg-zinc-900 p-8 rounded-3xl border-2 border-dashed border-orange-brand">
+                    <h3 class="text-3xl font-bold mb-8 text-orange-brand uppercase italic">🔥 BONOS GRATIS</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3"><span class="bg-orange-brand rounded-full p-1 text-xs">🎁</span> Rutina express 10 minutos</li>
+                        <li class="flex items-center gap-3"><span class="bg-orange-brand rounded-full p-1 text-xs">🎁</span> Plan acelerado de 7 días</li>
+                        <li class="flex items-center gap-3"><span class="bg-orange-brand rounded-full p-1 text-xs">🎁</span> Masterclass: Errores que arruinan tu progreso</li>
+                        <li class="flex items-center gap-3"><span class="bg-orange-brand rounded-full p-1 text-xs">🎁</span> Mentalidad para no abandonar</li>
+                    </ul>
+                    <p class="text-sm text-gray-400">Todo incluido sin costo adicional hoy.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="https://pay.hotmart.com/O105360467R" target="_blank" class="inline-block px-10 py-5 bg-white text-black text-xl font-bold rounded-xl btn-led-glow-white transition-all duration-300 uppercase">
+                    👉 QUIERO MIS BONOS GRATIS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PARA QUIÉN ES -->
+    <section class="py-20 bg-zinc-100 text-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h4 class="text-2xl font-bold mb-6 text-green-600">✔ Esto es para ti si:</h4>
+                    <ul class="space-y-4">
+                        <li>• Quieres empezar desde cero sin miedo</li>
+                        <li>• Buscas algo simple y efectivo</li>
+                        <li>• Quieres transformar tu disciplina</li>
+                        <li>• No tienes horas para entrenar</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-red-500">
+                    <h4 class="text-2xl font-bold mb-6 text-red-600">❌ NO es para ti si:</h4>
+                    <ul class="space-y-4">
+                        <li>• Buscas resultados mágicos sin esfuerzo</li>
+                        <li>• No estás dispuesto a cambiar hábitos</li>
+                        <li>• Buscas fórmulas secretas o ilegales</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- QUÉ INCLUYE -->
-    <section class="py-section">
-        <div class="container">
-            <h2 class="text-center">Todo lo que recibirás hoy</h2>
-            <div class="included-grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=200" alt="Ebook Principal" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
-                    <h4>Ebook Método Fit</h4>
-                    <p>La guía maestra con los secretos para perder peso de forma sostenible.</p>
+    <!-- 8. RESULTADOS -->
+    <section class="py-20 bg-black">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12">Lo que vas a lograr:</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-zinc-900 rounded-xl">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <p class="font-bold">Más energía</p>
                 </div>
-                <div class="product-card">
-                    <span class="bonus-tag">BONO #1 GRATIS</span>
-                    <i data-lucide="list-checks" style="width: 40px; height: 40px; color: var(--primary-green);"></i>
-                    <h4>Lista de Mercado</h4>
-                    <p>Optimiza tus compras y ahorra dinero con alimentos básicos.</p>
+                <div class="p-6 bg-zinc-900 rounded-xl">
+                    <div class="text-3xl mb-2">💪</div>
+                    <p class="font-bold">Mejor físico</p>
                 </div>
-                <div class="product-card">
-                    <span class="bonus-tag">BONO #2 GRATIS</span>
-                    <i data-lucide="calendar" style="width: 40px; height: 40px; color: var(--primary-green);"></i>
-                    <h4>Menú de 14 Días</h4>
-                    <p>Desayuno, almuerzo y cena planeados para que no pienses qué cocinar.</p>
+                <div class="p-6 bg-zinc-900 rounded-xl">
+                    <div class="text-3xl mb-2">🧠</div>
+                    <p class="font-bold">Más disciplina</p>
                 </div>
-                <div class="product-card">
-                    <span class="bonus-tag">BONO #3 GRATIS</span>
-                    <i data-lucide="dumbbell" style="width: 40px; height: 40px; color: var(--primary-green);"></i>
-                    <h4>Guía de Ejercicios</h4>
-                    <p>Instrucciones claras para entrenar en tu sala sin máquinas.</p>
+                <div class="p-6 bg-zinc-900 rounded-xl">
+                    <div class="text-3xl mb-2">🗓️</div>
+                    <p class="font-bold">Hábitos reales</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRECIO SECTION -->
-    <section class="py-section" id="precio" style="background: linear-gradient(to bottom, #f8fafc, #e2e8f0);">
-        <div class="container">
-            <div class="pricing-box">
-                <p class="limited-offer">¡OFERTA POR TIEMPO LIMITADO!</p>
-                <p class="old-price">Antes: $29.99 USD</p>
-                <span class="new-price">$5.99 USD</span>
-                <p style="margin-bottom: 25px;">Único pago. Acceso de por vida.</p>
-                <a href="https://pay.hotmart.com/H105396143P" target="_blank" class="btn btn-primary" style="width: 100%; font-size: 1.4rem;">👉 COMPRAR AHORA</a>
-                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" height="20">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" height="20">
+                <div class="p-6 bg-zinc-900 rounded-xl">
+                    <div class="text-3xl mb-2">🎯</div>
+                    <p class="font-bold">Claridad total</p>
+                </div>
+                <div class="p-6 bg-zinc-900 rounded-xl border border-orange-brand">
+                    <div class="text-3xl mb-2">🏆</div>
+                    <p class="font-bold">Confianza</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px 0; text-align: center; background: #000; color: #64748b; font-size: 0.8rem;">
-        <div class="container">
-            <p>Método Fit en Casa © 2026. Todos los derechos reservados.</p>
+    <!-- 9. PRECIO + URGENCIA -->
+    <section id="precio" class="py-24 bg-gradient-to-b from-zinc-900 to-black relative overflow-hidden">
+        <div class="max-w-xl mx-auto px-6 text-center relative z-10">
+            <div class="bg-white p-10 rounded-3xl text-black shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4 uppercase text-gray-500 tracking-widest">Oferta exclusiva</h2>
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <span class="text-2xl line-through text-gray-400">$39.99</span>
+                    <span class="text-6xl font-800 text-orange-brand">$5.99</span>
+                </div>
+                <p class="text-lg mb-8 font-medium">Único pago. Acceso de por vida.</p>
+                
+                <a href="https://pay.hotmart.com/O105360467R" target="_blank" class="block w-full py-6 bg-orange-brand text-white text-2xl font-800 rounded-2xl btn-led-glow transition-all shadow-lg uppercase">
+                    👉 COMPRAR AHORA
+                </a>
+                
+                <div class="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
+                    <span>🔒 Pago 100% Seguro</span>
+                    <span>•</span>
+                    <span>📥 Entrega Inmediata</span>
+                </div>
+            </div>
+            <p class="mt-8 text-orange-brand font-bold animate-pulse">⚠️ Esta oferta termina pronto.</p>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Inicializar iconos
-        lucide.createIcons();
-    </script>
+    <!-- 10. GARANTÍA -->
+    <section class="py-12 bg-black border-t border-zinc-800">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                Contenido educativo diseñado para ayudarte paso a paso. Los resultados dependen de tu constancia y compromiso personal. Compra segura garantizada.
+            </p>
+        </div>
+    </section>
+
+    <!-- 11. CIERRE -->
+    <section class="py-24 bg-black">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-800 mb-8">
+                NO NECESITAS MOTIVACIÓN...<br>
+                <span class="text-orange-brand">NECESITAS UN SISTEMA.</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12">
+                Ya lo tienes frente a ti. Ahora es tu decisión seguir igual o dar el primer paso hacia tu nueva versión.
+            </p>
+            <a href="https://pay.hotmart.com/O105360467R" target="_blank" class="inline-block px-12 py-6 bg-white text-black text-2xl font-800 rounded-2xl btn-led-glow-white transition-all shadow-xl uppercase">
+                🔥 QUIERO CAMBIAR MI VIDA
+            </a>
+            
+            <footer class="mt-20 pt-10 border-t border-zinc-900 text-gray-600 text-sm">
+                <p>&copy; 2026 Transforma tu Cuerpo y Disciplina. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+    </section>
+
 </body>
 </html>
